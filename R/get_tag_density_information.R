@@ -29,9 +29,9 @@ get_tag_density_information <- function(df, tag) {
         ) %>%
         dplyr::arrange(dplyr::desc(!!sym(tag)))
 
-    stats_table <- ggtexttable(stats_table,
+    stats_table <- ggpubr::ggtexttable(stats_table,
                                rows = NULL,
-                               theme = ttheme("classic"))
+                               theme = ggpubr::ttheme("classic"))
 
     f_str <- paste("vt_med", "~", tag)
     print(f_str)
@@ -44,7 +44,7 @@ get_tag_density_information <- function(df, tag) {
     welch <- df %>% rstatix::t_test(as.formula(f_str), var.equal = FALSE)
 
     welch_table <- ggpubr::ggtexttable(welch, rows = NULL,
-                               theme = ttheme("classic"))
+                               theme = ggpubr::ttheme("classic"))
 
     ggpubr::ggarrange(
         gg1,
