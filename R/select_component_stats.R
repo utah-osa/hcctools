@@ -1,7 +1,7 @@
 #select_component_stats
 # This function selects the component stats of interest, thereby removing all the tags.
 select_component_stats <- function(df) {
-    df <- df %>% select(
+    df <- df %>% dplyr::select(
         pc_list,
         pr_list,
         vt_cnt,

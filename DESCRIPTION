@@ -9,7 +9,13 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-
 Imports:
     dplyr,
-    ggvis
+    tibble, 
+    magrittr,
+    stringr,
+    data.table,
+    scales,
+    ggplot2,
+    tidyr
+    
