@@ -41,18 +41,18 @@ view_single_proc_bundle <- function(df){
 
     ) %>%
         t() %>%
-        knitr::kable(align = 'l', booktabs = TRUE) %>%
+        knitr::kable(align = 'l', booktabs = TRUE, format = "html") %>%
         kableExtra::kable_styling(latex_options = "striped", font_size = 9) %>%
         #row_spec(1, bold = TRUE, italic = TRUE) #%>%
         kableExtra::column_spec(1, bold = T, border_right = T, extra_css = "text-align: right;") %>%
         kableExtra::column_spec(2, bold = F, border_right = F, extra_css = "text-align: left;") %>%
-        kableExtra::row_spec(1:6, color = 'white', background = '#666') %>%
-        kableExtra::row_spec(7:10, color = 'white', background = '#f3476f') %>%
-        kableExtra::row_spec(11:14, color = 'white', background = '#e86a33') %>%
-        kableExtra::row_spec(15:18, color = 'white', background = '#e0a426') %>%
-        kableExtra::row_spec(19:22, color = 'white', background = '#77bf45') %>%
-        kableExtra::row_spec(23:26, color = 'white', background = '#617ff7') %>%
-        kableExtra::row_spec(27:30, color = 'white', background = '#a974ee') %>%
+        kableExtra::row_spec(1:6, color = "white", background = "#666") %>%
+        kableExtra::row_spec(7:10, color = "white", background = "#f3476f") %>%
+        kableExtra::row_spec(11:14, color = "white", background = "#e86a33") %>%
+        kableExtra::row_spec(15:18, color = "white", background = "#e0a426") %>%
+        kableExtra::row_spec(19:22, color = "white", background = "#77bf45") %>%
+        kableExtra::row_spec(23:26, color = "white", background = "#617ff7") %>%
+        kableExtra::row_spec(27:30, color = "white", background = "#a974ee") %>%
         kableExtra::pack_rows("Full Bundled Procedure", 1, 6,
                   label_row_css = "background-color: #666; color: #fff; font-size: 1.6em;") %>%
         kableExtra::pack_rows("Anesthesia", 7, 10,
