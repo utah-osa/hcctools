@@ -21,7 +21,7 @@ boxplot_by_tag <- function(df, resp = "vt_med", tag) {
 
     ylabel <- "Median Bundle Price"
 
-    temp_tile <- paste0("Boxplot Plot: Bundle with '", tag_type, "' tag")
+    temp_title <- paste0("Boxplot Plot: Bundle with '", tag_type, "' tag")
 
     df <- df %>% dplyr::group_by(!!sym(tag)) %>%
         dplyr::mutate(
