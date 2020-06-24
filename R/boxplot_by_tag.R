@@ -21,7 +21,6 @@ boxplot_by_tag <- function(df, resp = "vt_med", tag) {
 
     ylabel <- "Median Bundle Price"
 
-    temp_title <-
         paste0("Boxplot Plot: Bundle with '", tag_type, "' tag")
 
     df <- df %>% dplyr::group_by(!!sym(tag)) %>%
@@ -43,7 +42,7 @@ boxplot_by_tag <- function(df, resp = "vt_med", tag) {
                     )) +
         ggplot2::geom_point(
             data = df %>% dplyr::filter(outlier == FALSE),
-            aes_(color = as.name(tag)),
+            ggplot2::aes_(color = as.name(tag)),
             alpha = .5,
             position = ggplot2::position_jitter(w = 0.1, h = 0)
         ) +
