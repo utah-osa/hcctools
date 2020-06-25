@@ -36,9 +36,6 @@ view_single_proc_bundle <- function(df){
         `Surgery - Provider List` = surg_bundle_prs,
         `Surgery - Procedure Code Descriptions` = surg_bun_descr,
         `Surgery - Median Price` = surg_bun_med,
-
-
-
     ) %>%
         t() %>%
         knitr::kable(align = 'l', booktabs = TRUE, format = "html") %>%
