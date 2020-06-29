@@ -25,7 +25,7 @@ barplot_bun_comp_stack_med <- function(df) {
 
     component_meds <-
         rbind(surg_med, medi_med, path_med, radi_med, anes_med, fac_med) %>%
-        replace_na(0) %>%
+        tidyr::replace_na(0) %>%
         as.data.frame()
 
     component_meds$ID <- as.factor(1:nrow(component_meds))
@@ -52,7 +52,7 @@ barplot_bun_comp_stack_med <- function(df) {
         )
 
     melted <-  melted %>%
-        rdplyr::owwise()%>%
+        dplyr::rowwise()%>%
         dplyr::mutate(variable = pr_pc_list %>%
                           purrr::pluck(
                                     as.numeric(
