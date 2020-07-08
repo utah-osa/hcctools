@@ -41,7 +41,7 @@ bundle_the_bundle_surg_fac <- function(df){
                       new_surg  = stringr::str_trim(new_surg)) %>%
         dplyr::mutate(same_surg_fac = dplyr::if_else(new_surg == uq_fac_final, TRUE,FALSE)) %>%
 
-        dplyr::mutate(uq_fac_final = dplyr::if_else(same_surg_fac==TRUE, "",uq_fac_final)) %>%
+        dplyr::mutate(uq_fac_final = dplyr::if_else(same_surg_fac==TRUE, "Not Specified",uq_fac_final)) %>%
 
         #select(same_surg_fac,new_surg, uq_fac_final,new_fac, uq_fac_2, uq_surg,uq_fac)
         dplyr::group_by(new_surg,uq_fac_final) %>%
