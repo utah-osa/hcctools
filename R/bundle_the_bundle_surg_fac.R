@@ -57,13 +57,13 @@ bundle_the_bundle_surg_fac <- function(df){
         as.data.frame() %>%
         dplyr::group_by(new_surg, uq_fac_final) %>%
         dplyr::summarize(estimated_price = mean(bb_vt_med_mean)) %>%
-        dplyr::mutate(estimated_price = paste0("$",
-                                               format(
-                                                   round(estimated_price,2),
-                                                   big.interval = ","
-                                               )
-        )
-        ) %>%
+        # dplyr::mutate(estimated_price = paste0("$",
+        #                                        format(
+        #                                            round(estimated_price,2),
+        #                                            big.interval = ","
+        #                                        )
+        # )
+        #) %>%
         dplyr::select(`Doctor` = new_surg,
                       `Facility` = uq_fac_final,
                       `Estimated Price`=estimated_price)
