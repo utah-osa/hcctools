@@ -35,13 +35,14 @@ bundle_the_bundle_surg_fac <- function(df){
 
         )
         ) %>%
-        dplyr::mutate(uq_fac_final = dplyr::if_else(is.na(uq_fac_final), "", uq_fac_final),
-                      new_surg = dplyr::if_else(is.na(new_surg), "", new_surg)) %>%
+        dplyr::mutate(uq_fac_final = dplyr::if_else(is.na(uq_fac_final), "Not Specified", uq_fac_final),
+                      new_surg = dplyr::if_else(is.na(new_surg), "Not Specified", new_surg)) %>%
         dplyr::mutate(uq_fac_final = stringr::str_trim(uq_fac_final),
                       new_surg  = stringr::str_trim(new_surg)) %>%
         dplyr::mutate(same_surg_fac = dplyr::if_else(new_surg == uq_fac_final, TRUE,FALSE)) %>%
 
         dplyr::mutate(uq_fac_final = dplyr::if_else(same_surg_fac==TRUE, "",uq_fac_final)) %>%
+
         #select(same_surg_fac,new_surg, uq_fac_final,new_fac, uq_fac_2, uq_surg,uq_fac)
         dplyr::group_by(new_surg,uq_fac_final) %>%
         dplyr::summarize(num_bun_type = n(),
@@ -57,6 +58,9 @@ bundle_the_bundle_surg_fac <- function(df){
         as.data.frame() %>%
         dplyr::group_by(new_surg, uq_fac_final) %>%
         dplyr::summarize(estimated_price = mean(bb_vt_med_mean)) %>%
+        mutate(`Estimated Price` = round(`Estimated Price`,2)) %>%
+        dplyr::arrange(new_surg, uq_fac_final) %>%
+
         # dplyr::mutate(estimated_price = paste0("$",
         #                                        format(
         #                                            round(estimated_price,2),
@@ -68,3 +72,4 @@ bundle_the_bundle_surg_fac <- function(df){
                       `Facility` = uq_fac_final,
                       `Estimated Price`=estimated_price)
 }
+
