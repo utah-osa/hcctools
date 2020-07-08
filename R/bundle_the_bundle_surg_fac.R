@@ -35,8 +35,8 @@ bundle_the_bundle_surg_fac <- function(df){
 
         )
         ) %>%
-        dplyr::mutate(uq_fac_final = dplyr::if_else(is.na(uq_fac_final) | uq_fac_final="", "Not Specified", uq_fac_final),
-                      new_surg = dplyr::if_else(is.na(new_surg) | new_surg="", "Not Specified", new_surg)) %>%
+        dplyr::mutate(uq_fac_final = dplyr::if_else(is.na(uq_fac_final) | uq_fac_final=="", "Not Specified", uq_fac_final),
+                      new_surg = dplyr::if_else(is.na(new_surg) | new_surg=="", "Not Specified", new_surg)) %>%
         dplyr::mutate(uq_fac_final = stringr::str_trim(uq_fac_final),
                       new_surg  = stringr::str_trim(new_surg)) %>%
         dplyr::mutate(same_surg_fac = dplyr::if_else(new_surg == uq_fac_final, TRUE,FALSE)) %>%
